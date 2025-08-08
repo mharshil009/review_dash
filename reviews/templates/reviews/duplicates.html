@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duplicate Reviews</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            word-wrap: break-word;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        td:first-child {
+            max-width: 600px;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Duplicate Reviews</h2>
+
+    <table>
+        <tr>
+            <th>Review Text</th>
+            <th>Count</th>
+        </tr>
+        {% for item in duplicates %}
+            <tr>
+                <td>{{ item.review_text }}</td>
+                <td>{{ item.duplicate_count }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="2">No duplicate reviews found.</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
